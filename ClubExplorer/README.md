@@ -1,12 +1,8 @@
-# Project Base for a Vaadin application
+# Run through for UU cloudwhatever exam
 
-This project can be used as a starting point to create your own Vaadin application.
-It has the necessary dependencies and files to help you get started.
+This is a run through of a try it exercise set to help us prepare for an exam on creating a web app and deploying it to the cloud.
 
 To run the project, run `mvn jetty:run` and open [http://localhost:8080](http://localhost:8080) in browser.
-
-To update to the latest available Vaadin release, issue `mvn 
-versions:update-properties`
 
 Some useful links:
 - [Feature overview](https://vaadin.com/flow)
