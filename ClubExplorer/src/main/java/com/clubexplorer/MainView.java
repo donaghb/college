@@ -105,6 +105,53 @@ public class MainView extends VerticalLayout {
             EventGrid.setItems(events);
             EventGrid.setWidth("50%");
             add(EventGrid);
+
+            add(new H3("Entries"));
+            ResultSet rsEntries = conn.createStatement().executeQuery("SELECT * FROM Cyclists INNER JOIN Entries ON Cyclists.id = cyclists.id INNER JOIN Events ON event_id  = Events.id ORDER BY Entries.cyclist_id");
+            ArrayList<Entry> entries = new ArrayList<Entry>();
+
+            while (rsEntries.next()) 
+            {
+                Entry et = new Entry();
+                et.setId(rsEntries.getInt("id"));
+                et.setGender(rsEntries.getString("gender"));
+                et.setAge(rsEntries.getInt("age"));
+                et.setName(rsEntries.getString("name"));
+				et.setTitle(rsEntries.getString("title"));
+                et.setCost(rsEntries.getString("cost"));
+                et.setDate(rsEntries.getDate("date"));
+				et.setDistance(rsEntries.getInt("distance"));
+				et.setCyclist_id(rsEntries.getInt("cyclist_id"));
+				et.setEvent_id(rsEntries.getInt("event_id"));
+                entries.add(et);
+                
+                
+            }
+            Grid<Entry> EntryGrid = new Grid<>(Entry.class);
+            EntryGrid.removeAllColumns();
+			EntryGrid.addColumn(Entry::getId).setHeader("ID").setSortable(true)
+                    .setTextAlign(ColumnTextAlign.START);
+            EntryGrid.addColumn(Entry::getName).setHeader("Member Name").setSortable(true)
+                    .setTextAlign(ColumnTextAlign.START);
+            EntryGrid.addColumn(Entry::getAge).setHeader("Member Age").setSortable(true)
+                    .setTextAlign(ColumnTextAlign.CENTER);
+            EntryGrid.addColumn(Entry::getGender).setHeader("Member Gender").setSortable(true)
+                    .setTextAlign(ColumnTextAlign.START);
+			EntryGrid.addColumn(Entry::getTitle).setHeader("Event").setSortable(true)
+                    .setTextAlign(ColumnTextAlign.CENTER);
+            EntryGrid.addColumn(Entry::getCost).setHeader("Event Cost").setSortable(true)
+                    .setTextAlign(ColumnTextAlign.START);
+			EntryGrid.addColumn(Entry::getDate).setHeader("Event Date").setSortable(true)
+                    .setTextAlign(ColumnTextAlign.START);
+			EntryGrid.addColumn(Entry::getDistance).setHeader("Event Distance").setSortable(true)
+                    .setTextAlign(ColumnTextAlign.START);
+			EntryGrid.addColumn(Entry::getCyclist_id).setHeader("Cyclist ID").setSortable(true)
+                    .setTextAlign(ColumnTextAlign.START);
+			EntryGrid.addColumn(Entry::getEvent_id).setHeader("Event ID").setSortable(true)
+                    .setTextAlign(ColumnTextAlign.START);
+            EntryGrid.setItems(entries);
+            EntryGrid.setWidth("50%");
+            add(EntryGrid);
         }
 
         catch(SQLException e)
