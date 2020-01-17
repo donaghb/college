@@ -1,6 +1,6 @@
 # Run through for UU cloudwhatever exam
 
-This is a run through of a try it exercise set to help us prepare for an exam on creating a web app and deploying it to the cloud.
+A run through exercise to create a web simple app and deploy it to the cloud.
 
 To run the project, run `mvn jetty:run` and open [http://localhost:8080](http://localhost:8080) in browser.
 
