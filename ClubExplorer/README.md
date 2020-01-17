@@ -1,4 +1,4 @@
-# Run through for UU cloudwhatever exam
+# Run through exercise to show web app, data from a db, and deployment
 
 A run through exercise to create a web simple app and deploy it to the cloud.
 
